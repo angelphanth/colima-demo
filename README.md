@@ -22,7 +22,6 @@ brew install colima
 ```
 
 ### Install docker
-also docker-compose
 ```bash
 brew install docker docker-compose docker-buildx
 ```
@@ -100,16 +99,23 @@ as you usually would basically :)
 docker run hello-world
 ```
 
-7. Docker build: the `sparkle.Dockerfile` demo
+7. from docker hub e.g. [rancher/cowsay](https://hub.docker.com/r/rancher/cowsay)
+```bash
+docker pull rancher/cowsay
+docker run rancher/cowsay yo
+```
+
+
+8. Docker build: the `sparkle.Dockerfile` demo
 ```bash
 # build it 
 docker build -f sparkle.Dockerfile -t sparkle .
 
 # run it 
-docker run sparkle "Hello world!"
+docker run sparkle 'Hello world'
 ```
 
-8. Docker compose: a website at [http://localhost:8080](http://localhost:8080)
+9. Docker compose: a website at [http://localhost:8080](http://localhost:8080)
 ```bash 
 docker-compose up --build -d 
 ```
