@@ -1,6 +1,17 @@
 # Colima + docker demo 
 
-A quick intro to Colima - Containers on **Li**nux **Ma**chines
+A quick intro to Colima (**C**ontainers **o**n **Li**nux **Ma**chines) for macOS
+
+## Table of Contents
+- [Installation](#installation)
+- [Demo](#demo)
+    - [Getting started](#getting-started)
+    - [Setting up different profiles](#setting-up-different-profiles)
+    - [Using docker](#using-docker)
+- [Links](#links)
+- [Thank you](#thank-you)
+
+---
 
 ## Installation
 (requires homebrew, pay attention to the brew `Caveats` :))
@@ -11,37 +22,41 @@ brew install colima
 ```
 
 ### Install docker
-also docker-compose and whatever else if you want 
+also docker-compose
 ```bash
-brew install docker docker-compose
+brew install docker docker-compose docker-buildx
 ```
+
+---
 
 ## Demo 
 
 ### Getting started 
-1. Start up a default colima profile 
+1. Start up colima and docker with a default colima profile
 ```bash
 colima start
 ```
+Note: This is the same as running `colima start default`
 
-2. Take a look at the current VM
+
+2. Take a look at the default VM
 ```bash
 colima status --extended
 ```
 - by default colima allocates 2 cpu and ram 
+- Same as running `colima status default --extended`
 
 3. We can change the default 
 ```bash
 # stop the default vm if running
-colima stop 
+colima stop # or colima stop default
 
 # starting default but with new config
-colima start --cpus 4 --memory 8 
+colima start --cpus 4 --memory 8
 
 # take a look at profiles
 colima list
 ```
-- can also use `--edit` if wanting to edit in code editor
 
 ### Setting up different profiles
 
@@ -79,6 +94,37 @@ you can check which context is being used via `docker context ls`
 
 ### Using docker
 as you usually would basically :) 
-6. 
+
+6. like docker's hello-world
+```bash
+docker run hello-world
+```
+
+7. Docker build: the `sparkle.Dockerfile` demo
+```bash
+# build it 
+docker build -f sparkle.Dockerfile -t sparkle .
+
+# run it 
+docker run sparkle "Hello world!"
+```
+
+8. Docker compose: a website at [http://localhost:8080](http://localhost:8080)
+```bash 
+docker-compose up --build -d 
+```
+then go to browser 
+
+---
+
+## Links
+- [Colima docs](https://colima.run/docs/)
+- [Colima GitHub repo](https://github.com/abiosoft/colima)
+- [Quick start](https://colima.run/#quick-start)
+- [Awesome Medium article with tips](https://iniakunhuda.medium.com/2-years-with-colima-the-optimization-guide-i-wish-i-had-from-day-one-8b89b8155285)
+
+
+## Thank you 
+Thank you to the above resources and for your attention :) 
 
 
